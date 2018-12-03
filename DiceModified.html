@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dice</title>
+</head>
+<style type="text/css">
+div.dice{
+	right: 400px;
+	width: 32px;
+	background: #0077BE;
+	border: #999 1px solid;
+	padding: 10px;
+	font-size: 24px;
+	text-align: center;
+	margin: 5px;
+}
+div.dice1{
+	
+	right: : 500px;
+	width: 36px;
+	background: #228B22;
+	border: #999 1px solid;
+	padding: 10px;
+	font-size: 24px;
+	text-align: center;
+	margin: 5px;
+}
+</style>
+<script type="text/javascript">
+
+
+	let player1Rolled = false, player2Rolled = false,
+		dTotal = 0, dtotal1 = 0;
+
+function rollDice(){
+	var die1= document.getElementById("die1");
+	var die2= document.getElementById("die2");
+	var status= document.getElementById("status");
+	var d1= Math.floor(Math.random() *6) +1;
+	var d2= Math.floor(Math.random() *6) +1;
+	dTotal= d1+d2;
+	var out= dTotal;
+
+	die1.innerHTML = d1;
+	die2.innerHTML = d2;
+	out.innerHTML = dTotal;
+	status.innerHTML = "Player 1 rolled " +dTotal+".";
+
+	player1Rolled = true;
+	decide();
+
+
+}
+
+function rollDice1(){
+	var die3= document.getElementById("die3");
+	var die4= document.getElementById("die4");
+	var status1= document.getElementById("status1");
+	var d3= Math.floor(Math.random() *6) +1;
+	var d4= Math.floor(Math.random() *6) +1;
+	dTotal1= d3+d4;
+	var out1= dTotal1;
+
+	die3.innerHTML = d3;
+	die4.innerHTML = d4;
+	out1.innerHTML = dTotal1;
+	status1.innerHTML = "Player 2 rolled " +dTotal1+".";
+
+	player2Rolled = true;
+	decide();
+}
+
+function decide() {
+    if (player1Rolled && player2Rolled) {
+        if (dTotal > dTotal1){
+            alert("Player 1 Wins!");
+        }
+        if (dTotal < dTotal1){
+            alert("Player 2 Wins!");
+        }
+        if (dTotal == dTotal1){
+            alert("Tied");
+        }
+	}
+}
+	
+	
+
+
+	
+
+</script>
+<body>
+	<marquee bgcolor ="cyan" fontface="Century Gothic">modified by: Arca, Contreras, Guzman</marquee>
+<font color="white"><div id="die1" class="dice">0</div></font>
+<font color="white"><div id="die2" class="dice">0</div></font>
+<button onclick="rollDice()">Roll Dice</button><br>
+<font color="white"><div id="die3" class="dice1">0</div></font>
+<font color="white"><div id="die4" class="dice1">0</div></font>
+<button onclick="rollDice1()">Roll Dice</button><br>
+<font color="red"><h2 id="status" style="clear: left;"></h2></font>
+<font color="red"><h2 id="status1" style="clear: left;"></h2></font>
+<font color="red"><h2 id="wi" style="clear: left;"></h2></font>
+<font color="red"><h2 id="lo" style="clear: left;"></h2></font>
+<font color="red"><h2 id="result" style="clear: left;"></h2></font>
+
+</body>
+</html>
